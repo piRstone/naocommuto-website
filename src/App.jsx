@@ -120,7 +120,7 @@ function App() {
           href="#top"
           className="glass-panel inline-flex items-center overflow-hidden rounded-full pr-4 text-sm font-medium text-slate-700 transition-transform duration-300 hover:-translate-y-0.5"
         >
-          <img src={logo} alt="NaoCommuto" className="h-12 w-12 shrink-0 scale-[0.9]" />
+          <img src={logo} alt="NaoCommuto" className="h-12 w-12 shrink-0 scale-[1.3]" />
           <span className="py-2 pl-3 font-bold">NaoCommuto</span>
         </a>
 

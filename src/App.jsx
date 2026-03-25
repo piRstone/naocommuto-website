@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import {
   ArrowRight,
   Bike,
@@ -17,55 +16,6 @@ import parkingOkImage from './assets/parking-ok.png'
 
 const playStoreUrl =
   'https://play.google.com/store/apps/details?id=com.pirstone.naocommuto&hl=fr&gl=FR&referrer=utm_source%3Dnaocommuto.pirstone.com%26utm_medium%3Dwebsite%26utm_campaign%3Dlanding_page'
-const pageUrl = 'https://naocommuto.pirstone.com/'
-const pageTitle = 'Horaires Tram et Bus à Nantes en Temps Réel | NaoCommuto'
-const pageDescription =
-  'Horaires tram et bus à Nantes, temps réel, prochain passage tram ligne 1, bus C1, Busway, Bicloo et parkings relais Nantes : NaoCommuto centralise les infos utiles pour vos déplacements.'
-const pageKeywords =
-  'horaires tram Nantes, horaires bus Nantes, horaires tram C1, horaires busway Nantes, temps réel tram Nantes, prochain passage tram ligne 1, parking relais Nantes, horaires Naolib, Bicloo Nantes'
-const pageImage = 'https://naocommuto.pirstone.com/og-image.jpg'
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'WebSite',
-      '@id': `${pageUrl}#website`,
-      url: pageUrl,
-      name: 'NaoCommuto',
-      inLanguage: 'fr-FR',
-      description: 'Application pour consulter les horaires de transports en temps réel à Nantes.',
-      publisher: {
-        '@type': 'Organization',
-        name: 'piRstone',
-      },
-    },
-    {
-      '@type': 'SoftwareApplication',
-      '@id': `${pageUrl}#app`,
-      name: 'NaoCommuto',
-      applicationCategory: 'TravelApplication',
-      operatingSystem: 'Android',
-      downloadUrl: playStoreUrl,
-      url: pageUrl,
-      image: pageImage,
-      description:
-        'NaoCommuto aide à consulter les horaires de tram et bus à Nantes, les prochains passages en temps réel, Bicloo et les parkings relais.',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'EUR',
-      },
-      areaServed: {
-        '@type': 'City',
-        name: 'Nantes',
-      },
-      provider: {
-        '@type': 'Organization',
-        name: 'piRstone',
-      },
-    },
-  ],
-}
 
 const featureCards = [
   {
@@ -105,7 +55,6 @@ const quickFacts = [
 ]
 
 function App() {
-  useSeoMetadata()
   const currentYear = new Date().getFullYear()
 
   return (
@@ -419,109 +368,6 @@ function PhoneShell({ children }) {
       </div>
     </div>
   )
-}
-
-function useSeoMetadata() {
-  useEffect(() => {
-    document.documentElement.lang = 'fr-FR'
-    document.title = pageTitle
-
-    upsertMetaByName('description', pageDescription)
-    upsertMetaByName('keywords', pageKeywords)
-    upsertMetaByName(
-      'robots',
-      'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
-    )
-    upsertMetaByName(
-      'googlebot',
-      'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
-    )
-    upsertMetaByName('author', 'piRstone')
-    upsertMetaByName('application-name', 'NaoCommuto')
-    upsertMetaByName('apple-mobile-web-app-title', 'NaoCommuto')
-    upsertMetaByName('format-detection', 'telephone=no')
-    upsertMetaByName('theme-color', '#f8fafc')
-    upsertMetaByProperty('og:locale', 'fr_FR')
-    upsertMetaByProperty('og:type', 'website')
-    upsertMetaByProperty('og:site_name', 'NaoCommuto')
-    upsertMetaByProperty('og:url', pageUrl)
-    upsertMetaByProperty('og:title', pageTitle)
-    upsertMetaByProperty('og:description', pageDescription)
-    upsertMetaByProperty('og:image', pageImage)
-    upsertMetaByProperty('og:image:type', 'image/svg+xml')
-    upsertMetaByProperty('og:image:width', '1200')
-    upsertMetaByProperty('og:image:height', '630')
-    upsertMetaByProperty(
-      'og:image:alt',
-      'NaoCommuto, application de transports en temps réel à Nantes',
-    )
-    upsertMetaByName('twitter:card', 'summary_large_image')
-    upsertMetaByName('twitter:title', pageTitle)
-    upsertMetaByName('twitter:description', pageDescription)
-    upsertMetaByName('twitter:image', pageImage)
-    upsertMetaByName(
-      'twitter:image:alt',
-      'NaoCommuto, application de transports en temps réel à Nantes',
-    )
-    upsertLink('canonical', pageUrl)
-    upsertAlternate('fr-FR', pageUrl)
-    upsertStructuredData('naocommuto-structured-data', structuredData)
-  }, [])
-}
-
-function upsertMetaByName(name, content) {
-  let element = document.head.querySelector(`meta[name="${name}"]`)
-  if (!element) {
-    element = document.createElement('meta')
-    element.setAttribute('name', name)
-    document.head.appendChild(element)
-  }
-  element.setAttribute('content', content)
-}
-
-function upsertMetaByProperty(property, content) {
-  let element = document.head.querySelector(`meta[property="${property}"]`)
-  if (!element) {
-    element = document.createElement('meta')
-    element.setAttribute('property', property)
-    document.head.appendChild(element)
-  }
-  element.setAttribute('content', content)
-}
-
-function upsertLink(rel, href) {
-  let element = document.head.querySelector(`link[rel="${rel}"]`)
-  if (!element) {
-    element = document.createElement('link')
-    element.setAttribute('rel', rel)
-    document.head.appendChild(element)
-  }
-  element.setAttribute('href', href)
-}
-
-function upsertAlternate(hreflang, href) {
-  let element = document.head.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`)
-  if (!element) {
-    element = document.createElement('link')
-    element.setAttribute('rel', 'alternate')
-    element.setAttribute('hreflang', hreflang)
-    document.head.appendChild(element)
-  }
-  element.setAttribute('href', href)
-}
-
-function upsertStructuredData(id, data) {
-  let element = document.head.querySelector(`script[data-seo-id="${id}"]`)
-  if (!element) {
-    element = document.head.querySelector('script[type="application/ld+json"]')
-  }
-  if (!element) {
-    element = document.createElement('script')
-    element.type = 'application/ld+json'
-    document.head.appendChild(element)
-  }
-  element.setAttribute('data-seo-id', id)
-  element.textContent = JSON.stringify(data)
 }
 
 function InsightCard({ title, text }) {

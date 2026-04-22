@@ -30,7 +30,7 @@ const featureCards = [
   {
     id: 'bicloo',
     icon: Bike,
-    label: 'Bicloo',
+    label: 'Naolib Vélo',
     title: 'Pas un coup de pédale en trop.',
     description:
       "Vérifiez avant de partir si votre trajet à vélo est faisable entre votre station de départ et votre station d'arrivée.",
@@ -109,7 +109,7 @@ function App() {
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
               NaoCommuto centralise les prochains passages de bus et trams, la
-              disponibilité des Bicloo et les places restantes dans les
+              disponibilité des Naolib Vélo et les places restantes dans les
               parkings relais pour vous faire gagner du temps tous les jours.
             </p>
 
@@ -331,7 +331,7 @@ function FeatureCard({ feature }) {
             <div className="overflow-hidden p-3 rounded-[1.75rem] border border-white/70 bg-white/75 shadow-[0_18px_50px_rgba(148,163,184,0.18)] backdrop-blur-xl">
               <img
                 src={bikeJourneyImage}
-                alt="Capture d'écran d'un trajet Bicloo"
+                alt="Capture d'écran d'un trajet Naolib Vélo"
                 className="h-full w-full object-cover"
               />
             </div>

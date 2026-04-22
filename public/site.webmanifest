@@ -1,7 +1,7 @@
 {
   "name": "NaoCommuto",
   "short_name": "NaoCommuto",
-  "description": "Horaires tram et bus a Nantes en temps reel, Bicloo et parkings relais.",
+  "description": "Horaires tram et bus a Nantes en temps reel, Naolib Vélo et parkings relais.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f8fafc",

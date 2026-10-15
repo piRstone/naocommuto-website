@@ -1,7 +1,6 @@
 import {
   ArrowRight,
   Bike,
-  FlaskConical,
   TramFront,
   ParkingCircle,
 } from 'lucide-react'
@@ -94,11 +93,6 @@ function App() {
       <main id="top" className="pb-16">
         <section className="mx-auto grid w-full max-w-7xl gap-12 px-6 pb-20 pt-6 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-12 lg:pb-28 lg:pt-12">
           <div className="relative z-10 flex flex-col justify-center">
-            <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/60 bg-white/55 px-4 py-2 text-sm font-medium text-slate-700 shadow-[0_10px_40px_rgba(148,163,184,0.18)] backdrop-blur-xl">
-              <FlaskConical className="h-4 w-4 text-amber-500" />
-              Application en bêta
-            </div>
-
             <h1 className="max-w-3xl font-['Space_Grotesk',sans-serif] text-5xl font-semibold leading-[0.96] tracking-[-0.05em] text-slate-950 sm:text-6xl lg:text-7xl">
               Ne perdez plus{' '}
               <span className="bg-linear-to-r from-[#76BCFF] to-[#78D702] bg-clip-text text-transparent">

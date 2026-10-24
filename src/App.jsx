@@ -3,6 +3,7 @@ import {
   Bike,
   TramFront,
   ParkingCircle,
+  ChartNoAxesCombined,
 } from 'lucide-react'
 import busStopImage from './assets/bus-stop.png'
 import bikeJourneyImage from './assets/bike-journey.png'
@@ -12,6 +13,8 @@ import homescreenImage from './assets/homescreen.png'
 import logo from './assets/logo-gradient.svg'
 import parkingFullImage from './assets/parking-full.png'
 import parkingOkImage from './assets/parking-ok.png'
+import voiJourneyImage from './assets/voi-journey.png'
+import parkAndRideEstimationImage from './assets/park-and-ride-estimation.png'
 
 const playStoreUrl =
   'https://play.google.com/store/apps/details?id=com.pirstone.naocommuto&hl=fr&gl=FR&referrer=utm_source%3Dnaocommuto.pirstone.com%26utm_medium%3Dwebsite%26utm_campaign%3Dlanding_page'
@@ -27,13 +30,13 @@ const featureCards = [
     tone: 'from-cyan-400/25 via-white/70 to-white/10',
   },
   {
-    id: 'bicloo',
+    id: 'voi',
     icon: Bike,
-    label: 'Naolib Vélo',
-    title: 'Pas un coup de pédale en trop.',
+    label: 'Vélos VOI',
+    title: 'Un vélo au départ, une place à l’arrivée.',
     description:
-      "Vérifiez avant de partir si votre trajet à vélo est faisable entre votre station de départ et votre station d'arrivée.",
-    tone: 'from-lime-300/30 via-white/70 to-white/10',
+      'Suivez les vélos VOI en libre-service disponibles près de votre point de départ et les places estimées à l’arrivée pour préparer votre trajet en un coup d’œil.',
+    tone: 'from-rose-300/30 via-white/70 to-white/10',
   },
   {
     id: 'parking',
@@ -43,6 +46,24 @@ const featureCards = [
     description:
       'En voiture vers Nantes ? Choisissez rapidement le parking relais le plus pertinent et surveillez en direct sa disponibilité.',
     tone: 'from-blue-400/25 via-white/70 to-white/10',
+  },
+  {
+    id: 'parking-estimation',
+    icon: ChartNoAxesCombined,
+    label: 'Prévisions des parkings relais',
+    title: 'Anticipez les places avant d’arriver.',
+    description:
+      'Combien de places restera-t-il dans 5, 10 ou 15 minutes ? Consultez une estimation des disponibilités à venir dans votre parking relais pour mieux préparer votre arrivée.',
+    tone: 'from-indigo-300/30 via-white/70 to-white/10',
+  },
+  {
+    id: 'bicloo',
+    icon: Bike,
+    label: 'Naolib Vélo',
+    title: 'Pas un coup de pédale en trop.',
+    description:
+      "Vérifiez avant de partir si votre trajet à vélo est faisable entre votre station de départ et votre station d'arrivée.",
+    tone: 'from-lime-300/30 via-white/70 to-white/10',
   },
 ]
 
@@ -182,7 +203,7 @@ function App() {
           />
 
           <div
-            className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+            className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-6"
           >
             {featureCards.map((feature) => (
               <FeatureCard key={feature.id} feature={feature} />
@@ -337,7 +358,7 @@ function FeatureCard({ feature }) {
   const Icon = feature.icon
 
   return (
-    <article className="glass-panel feature-card overflow-hidden rounded-4xl p-6 sm:p-7">
+    <article id={feature.id} className={`glass-panel feature-card overflow-hidden rounded-4xl p-6 sm:p-7 ${feature.id === 'bicloo' ? 'md:col-span-2 xl:col-span-3' : feature.id === 'parking-estimation' ? 'xl:col-span-3' : 'xl:col-span-2'}`}>
       <div
         className={`absolute inset-0 bg-linear-to-br ${feature.tone} opacity-90`}
       />
@@ -390,6 +411,37 @@ function FeatureCard({ feature }) {
                 />
               </div>
             </div>
+          )}
+          {feature.id === 'voi' && (
+            <div className="overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/75 p-3 shadow-[0_18px_50px_rgba(148,163,184,0.18)] backdrop-blur-xl">
+              <img
+                src={voiJourneyImage}
+                alt="Trajet VOI : 5 vélos disponibles au départ et 6 places estimées à l’arrivée"
+                className="h-auto w-full rounded-2xl"
+                loading="lazy"
+              />
+            </div>
+          )}
+          {feature.id === 'parking-estimation' && (
+            <figure className="m-0">
+              <a
+                href={parkAndRideEstimationImage}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Voir la capture complète des estimations du parking relais"
+                className="mx-auto block aspect-[1.2] max-w-lg overflow-hidden rounded-[1.75rem] border border-white/70 bg-white shadow-[0_18px_50px_rgba(148,163,184,0.18)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-600"
+              >
+                <img
+                  src={parkAndRideEstimationImage}
+                  alt="Parking relais Grèneraie : 102 places libres et estimations à 5, 10 et 15 minutes"
+                  className="-mt-[12%] h-auto w-full"
+                  loading="lazy"
+                />
+              </a>
+              <figcaption className="mt-3 text-sm leading-6 text-slate-500">
+                Estimations indicatives. Cliquez sur l’image pour voir la capture complète.
+              </figcaption>
+            </figure>
           )}
         </div>
       </div>

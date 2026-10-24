@@ -256,7 +256,7 @@ function App() {
               </p>
 
               <nav aria-label="Liens de pied de page" className="flex flex-col gap-4 text-lg sm:flex-row sm:flex-wrap sm:justify-center sm:gap-10">
-                <a href="https://pirstone.com/nao-commuto/privacy" className="transition-colors hover:text-white">
+                <a href="/privacy/" className="transition-colors hover:text-white">
                   Politique de confidentialité
                 </a>
                 <a href="https://pirstone.com/nao-commuto/cgu" className="transition-colors hover:text-white">

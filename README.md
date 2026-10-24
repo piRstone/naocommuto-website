@@ -1,5 +1,14 @@
 # React + Vite
 
+## Local development and production build
+
+Run `npm run dev` for development. Run `npm run build` to build the client assets
+and prerender the homepage into `dist/index.html`, then `npm run preview` to inspect
+the production site locally. The generated HTML contains the homepage content,
+including the FAQ, before JavaScript runs; React hydrates it in the browser.
+The temporary server bundle is removed after the build. GitHub Pages serves only
+the static `dist` directory, including the privacy policy and terms of use.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

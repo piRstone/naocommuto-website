@@ -53,6 +53,29 @@ const quickFacts = [
   '100 % gratuite et indépendante',
 ]
 
+const faqItems = [
+  {
+    question: 'NaoCommuto est-elle gratuite ?',
+    answer: 'Oui, NaoCommuto est une application gratuite. Aucun compte utilisateur n’est nécessaire pour consulter les informations de transport.',
+  },
+  {
+    question: 'Sur quels téléphones peut-on utiliser NaoCommuto ?',
+    answer: 'NaoCommuto est disponible sur Android via Google Play. La version iOS est en préparation et n’est pas encore disponible sur l’App Store.',
+  },
+  {
+    question: 'Quelles informations peut-on consulter à Nantes ?',
+    answer: 'L’application permet de consulter les prochains passages de bus, de trams et de Navibus, la disponibilité des vélos et des places dans les stations Naolib Vélo, ainsi que les places restantes dans les parkings relais.',
+  },
+  {
+    question: 'D’où viennent les données affichées dans l’application ?',
+    answer: 'NaoCommuto utilise les données publiques ouvertes de Nantes Métropole et des services de mobilité Naolib. Leur disponibilité et leur exactitude dépendent des fournisseurs de données : les informations sont fournies à titre indicatif.',
+  },
+  {
+    question: 'NaoCommuto est-elle une application officielle de Naolib ?',
+    answer: 'Non, NaoCommuto est une application indépendante, éditée par Pierre Lavalley (piRstone). Elle n’est ni affiliée, ni sponsorisée, ni approuvée par Nantes Métropole ou Naolib.',
+  },
+]
+
 function App() {
   const currentYear = new Date().getFullYear()
 
@@ -93,12 +116,11 @@ function App() {
       <main id="top" className="pb-16">
         <section className="mx-auto grid w-full max-w-7xl gap-12 px-6 pb-20 pt-6 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-12 lg:pb-28 lg:pt-12">
           <div className="relative z-10 flex flex-col justify-center">
-            <h1 className="max-w-3xl font-['Space_Grotesk',sans-serif] text-5xl font-semibold leading-[0.96] tracking-[-0.05em] text-slate-950 sm:text-6xl lg:text-7xl">
-              Ne perdez plus{' '}
+            <h1 className="max-w-3xl font-['Space_Grotesk',sans-serif] text-[clamp(2.25rem,10vw,3rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-slate-950 sm:text-6xl lg:text-7xl">
+              NaoCommuto, vos transports à Nantes en{' '}
               <span className="bg-linear-to-r from-[#76BCFF] to-[#78D702] bg-clip-text text-transparent">
-                une minute
+                temps réel
               </span>
-              {' '}à Nantes
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
@@ -198,6 +220,27 @@ function App() {
           </div>
         </section>
 
+        <section
+          id="faq"
+          aria-labelledby="faq-title"
+          className="mx-auto w-full max-w-7xl px-6 pt-12 sm:px-8 lg:px-12"
+        >
+          <h2 id="faq-title" className="font-['Space_Grotesk',sans-serif] text-4xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-5xl">
+            Vos questions sur NaoCommuto
+          </h2>
+          <div className="mt-8 grid gap-4">
+            {faqItems.map(({ question, answer }) => (
+              <details key={question} className="glass-panel rounded-3xl px-6 py-5 sm:px-8">
+                <summary className="relative cursor-pointer rounded-lg text-lg font-semibold text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-600">
+                  {question}
+                </summary>
+                <p className="relative mt-4 max-w-4xl text-base leading-7 text-slate-600">
+                  {answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
       </main>
 
       <footer
